@@ -1,5 +1,4 @@
 # aubrieswebsite
 Aubrie's website. Built with [hugo](https://gohugo.io/).
 
-### TODO:
-1. Fill out rest of README.md
+### For more info please click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
