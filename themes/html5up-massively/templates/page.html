@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME }} - {{ page.title|striptags }}{%endblock%}
+{% block title %}{{ SITENAME }} - {{ page.title|striptags }}{% endblock %}
 
 {% block content %}
     <!-- Main -->
@@ -9,7 +9,11 @@
         <!-- Post -->
             <section class="post">
                 <header class="major">
+                    {% if page.showdatetime %}
                     <span class="date">{{ page.date.strftime("%b %d %Y") }}</span>
+                    {% else %}
+                    <span class="date">•••</span>
+                    {% endif %}
                     <h1>{{ page.title }}</h1>
                     <p>{{ page.summary }}</p>
                 </header>
