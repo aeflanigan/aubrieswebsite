@@ -21,7 +21,7 @@
 					<p>{{ ns.featured.summary }}</p>
 				</header>
 				{% if ns.featured.mainimage %}
-				<a href="{{ SITEURL }}/{{ ns.featured.url }}" class="image main"><img src="{{ ns.featured.mainimage }}" alt="" /></a>
+				<a href="{{ SITEURL }}/{{ ns.featured.url }}" class="image main"><img src="{{ SITEURL }}/{{ ns.featured.mainimage }}" alt="" /></a>
 				{% endif %}
 				<ul class="actions special">
 					<li><a href="{{ SITEURL }}/{{ ns.featured.url }}" class="button large">Full Story</a></li>
@@ -38,7 +38,7 @@
 						<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</h2>
 					</header>
 					{% if article.mainimage %}
-					<a href="{{ SITEURL }}/{{ article.url }}" class="image fit"><img src="{{ article.mainimage }}" alt="" /></a>
+					<a href="{{ SITEURL }}/{{ article.url }}" class="image fit"><img src="{{ SITEURL }}/{{ article.mainimage }}" alt="" /></a>
 					{% endif %}
 					<p>{{ article.summary }}</p>
 					<ul class="actions special">
