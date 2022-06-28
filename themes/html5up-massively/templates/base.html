@@ -17,7 +17,7 @@
 	<body class="is-preload">
         {% block body %}
 		<!-- Wrapper -->
-			<div id="wrapper"{% block fadein %}{% endblock %}>
+			<div id="wrapper"{% if page_name is defined and page_name is eq 'index' %} class="fade-in"{% endif %}>
 
 				<!-- Intro -->
 					<div id="intro">
@@ -37,7 +37,7 @@
 					<nav id="nav">
 						<ul class="links">
 							{% for p in [{'title': SITENAME, 'url': "index.html", 'slug': 'index'}] + pages %}
-							{% if (page is defined and page.slug is eq p.slug) or (page_name and p.slug is eq page_name) %}
+							{% if (page is defined and page.slug is eq p.slug) or (page_name is defined and p.slug is eq page_name) %}
 							<li class="active"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
 							{% else %}
 							<li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
