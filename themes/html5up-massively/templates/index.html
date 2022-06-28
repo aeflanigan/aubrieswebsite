@@ -38,12 +38,19 @@
 							<li><a href="generic.html">Generic Page</a></li>
 							<li><a href="elements.html">Elements Reference</a></li>
 						</ul>
+						{% if SOCIAL %}
 						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						{% set social_icons = {'twitter': 'icon brands fa-twitter',
+											   'facebook': 'icon brands fa-facebook-f',
+											   'instagram': 'icon brands fa-instagram',
+											   'github': 'icon brands fa-github'
+											}
+						%}
+						{% for platform, url in SOCIAL %}
+							<li><a href="{{ url }}" class="{{ social_icons.get(platform) }}"><span class="label">{{ platform|capitalize }}</span></a></li>
+						{% endfor %}
 						</ul>
+						{% endif %}
 					</nav>
 
 				<!-- Main -->

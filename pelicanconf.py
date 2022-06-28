@@ -32,8 +32,10 @@ LINKS = (('Pelican', 'https://getpelican.com/'),
 
 # Social widget
 # TODO: Aubrie, fill this out with your social media links
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('twitter', 'https://www.linkedin.com/'),
+          ('facebook', 'https://www.facebook.com/'),
+          ('instagram', 'https://www.instagram.com/'),
+          ('github', 'https://github.com/aeflanigan/'))
 
 DEFAULT_PAGINATION = False
 
