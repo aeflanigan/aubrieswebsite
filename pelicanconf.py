@@ -9,6 +9,9 @@ PATH = 'content'
 ARTICLE_PATHS = [p.absolute() for p in Path(PATH).glob('**/articles/*.md')]
 PAGE_PATHS = [p.absolute() for p in Path(PATH).glob('**/pages/*.md')]
 
+# Settings for html5up-massively theme
+FEATURED_ARTICLE = 'article-one'
+
 TIMEZONE = 'US/Eastern'
 
 DEFAULT_LANG = 'English'

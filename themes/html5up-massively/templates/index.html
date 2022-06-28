@@ -1,3 +1,4 @@
+{% set ns = namespace(featured=None) %}
 <!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
@@ -36,7 +37,7 @@
 						<ul class="links">
 							<li class="active"><a href="index.html">{{ SITENAME }}</a></li>
 							{% for page in pages %}
-							<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+							<li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
 							{% endfor %}
 						</ul>
 						{% if SOCIAL %}
@@ -48,7 +49,7 @@
 											}
 						%}
 						{% for platform, url in SOCIAL %}
-							<li><a href="{{ url }}" class="{{ social_icons.get(platform) }}"><span class="label">{{ platform|capitalize }}</span></a></li>
+							<li><a href="{{ SITEURL }}/{{ url }}" class="{{ social_icons.get(platform) }}"><span class="label">{{ platform|capitalize }}</span></a></li>
 						{% endfor %}
 						</ul>
 						{% endif %}
@@ -57,21 +58,31 @@
 				<!-- Main -->
 					<div id="main">
 
+						{% if FEATURED_ARTICLE %}
+							{% if FEATURED_ARTICLE is eq(-1) %}
+								{% set ns.featured = articles[0] %}
+							{% else %}
+								{% for article in articles %}
+									{% if article.slug is eq(FEATURED_ARTICLE) %}
+										{% set ns.featured = article %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
+									<span class="date">{{ ns.featured.date.strftime("%b %d %Y") }}</span>
+									<h2><a href="{{ SITEURL }}/{{ ns.featured.url }}">{{ ns.featured.title }}</a></h2>
+									<p>{{ ns.featured.summary }}</p>
 								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
+								{% if ns.featured.mainimage %}
+								<a href="{{ SITEURL }}/{{ ns.featured.url }}" class="image main"><img src="{{ ns.featured.mainimage }}" alt="" /></a>
+								{% endif %}
 								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
+									<li><a href="{{ SITEURL }}/{{ ns.featured.url }}" class="button large">Full Story</a></li>
 								</ul>
 							</article>
+						{% endif %}
 
 						<!-- Posts -->
 							<section class="posts">
