@@ -1,187 +1,67 @@
+{% extends "base.html" %}
+{% block fadein %} class="fade-in"{% endblock %}
+{% block content %}
 {% set ns = namespace(featured=None) %}
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>{{ SITENAME }}</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!-- Main -->
+	<div id="main">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+		{% if FEATURED_ARTICLE %}
+			{% if FEATURED_ARTICLE is eq(-1) %}
+				{% set ns.featured = articles[0] %}
+			{% else %}
+				{% for article in articles if article.slug == FEATURED_ARTICLE %}
+					{% set ns.featured = article %}
+				{% endfor %}
+			{% endif %}
+		<!-- Featured Post -->
+			<article class="post featured">
+				<header class="major">
+					<span class="date">{{ ns.featured.date.strftime("%b %d %Y") }}</span>
+					<h2><a href="{{ SITEURL }}/{{ ns.featured.url }}">{{ ns.featured.title }}</a></h2>
+					<p>{{ ns.featured.summary }}</p>
+				</header>
+				{% if ns.featured.mainimage %}
+				<a href="{{ SITEURL }}/{{ ns.featured.url }}" class="image main"><img src="{{ ns.featured.mainimage }}" alt="" /></a>
+				{% endif %}
+				<ul class="actions special">
+					<li><a href="{{ SITEURL }}/{{ ns.featured.url }}" class="button large">Full Story</a></li>
+				</ul>
+			</article>
+		{% endif %}
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>{{ SITENAME }}</h1>
-						{% if SITESUBTITLE %}<p>{{ SITESUBTITLE }}</p>{% endif %}
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
-
-				<!-- Header -->
-					<header id="header">
-						<a href="{{ SITEURL }}/" class="logo">{{ SITENAME }}</a>
+		<!-- Posts -->
+			<section class="posts">
+				{% for article in articles %}
+				<article>
+					<header>
+						<span class="date">{{ article.date.strftime("%b %d %Y") }}</span>
+						<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</h2>
 					</header>
+					{% if article.mainimage %}
+					<a href="{{ SITEURL }}/{{ article.url }}" class="image fit"><img src="{{ article.mainimage }}" alt="" /></a>
+					{% endif %}
+					<p>{{ article.summary }}</p>
+					<ul class="actions special">
+						<li><a href="{{ SITEURL }}/{{ article.url }}" class="button">Full Story</a></li>
+					</ul>
+				</article>
+				{% endfor %}
+			</section>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">{{ SITENAME }}</a></li>
-							{% for page in pages %}
-							<li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
-							{% endfor %}
-						</ul>
-						{% if SOCIAL %}
-						<ul class="icons">
-						{% set social_icons = {'twitter': 'icon brands fa-twitter',
-											   'facebook': 'icon brands fa-facebook-f',
-											   'instagram': 'icon brands fa-instagram',
-											   'github': 'icon brands fa-github'
-											}
-						%}
-						{% for platform, url in SOCIAL %}
-							<li><a href="{{ SITEURL }}/{{ url }}" class="{{ social_icons.get(platform) }}"><span class="label">{{ platform|capitalize }}</span></a></li>
-						{% endfor %}
-						</ul>
-						{% endif %}
-					</nav>
+		<!-- Footer -->
+			<!-- <footer>
+				<div class="pagination">
+					<a href="#" class="previous">Prev</a>
+					<a href="#" class="page active">1</a>
+					<a href="#" class="page">2</a>
+					<a href="#" class="page">3</a>
+					<span class="extra">&hellip;</span>
+					<a href="#" class="page">8</a>
+					<a href="#" class="page">9</a>
+					<a href="#" class="page">10</a>
+					<a href="#" class="next">Next</a>
+				</div>
+			</footer> -->
 
-				<!-- Main -->
-					<div id="main">
-
-						{% if FEATURED_ARTICLE %}
-							{% if FEATURED_ARTICLE is eq(-1) %}
-								{% set ns.featured = articles[0] %}
-							{% else %}
-								{% for article in articles if article.slug == FEATURED_ARTICLE %}
-									{% set ns.featured = article %}
-								{% endfor %}
-							{% endif %}
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">{{ ns.featured.date.strftime("%b %d %Y") }}</span>
-									<h2><a href="{{ SITEURL }}/{{ ns.featured.url }}">{{ ns.featured.title }}</a></h2>
-									<p>{{ ns.featured.summary }}</p>
-								</header>
-								{% if ns.featured.mainimage %}
-								<a href="{{ SITEURL }}/{{ ns.featured.url }}" class="image main"><img src="{{ ns.featured.mainimage }}" alt="" /></a>
-								{% endif %}
-								<ul class="actions special">
-									<li><a href="{{ SITEURL }}/{{ ns.featured.url }}" class="button large">Full Story</a></li>
-								</ul>
-							</article>
-						{% endif %}
-
-						<!-- Posts -->
-							<section class="posts">
-								{% for article in articles %}
-								<article>
-									<header>
-										<span class="date">{{ article.date.strftime("%b %d %Y") }}</span>
-										<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</h2>
-									</header>
-									{% if article.mainimage %}
-									<a href="{{ SITEURL }}/{{ article.url }}" class="image fit"><img src="{{ article.mainimage }}" alt="" /></a>
-									{% endif %}
-									<p>{{ article.summary }}</p>
-									<ul class="actions special">
-										<li><a href="{{ SITEURL }}/{{ article.url }}" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								{% endfor %}
-							</section>
-
-						<!-- Footer -->
-							<!-- <footer>
-								<div class="pagination">
-									<a href="#" class="previous">Prev</a>
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer> -->
-
-					</div>
-
-				<!-- Footer -->
-					<!-- <footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer> -->
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; {{ AUTHOR }}</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+	</div>
+{% endblock content %}
