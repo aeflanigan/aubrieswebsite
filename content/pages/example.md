@@ -5,6 +5,7 @@ Category: Examples
 Tags: example, page
 Slug: page-example
 Summary: Short description for preview and feeds
+ShowDateTime: True
 
 ### This is an example of a page
 
