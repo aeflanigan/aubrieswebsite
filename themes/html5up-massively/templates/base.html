@@ -36,9 +36,12 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">{{ SITENAME }}</a></li>
-							{% for page in pages %}
-							<li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+							{% for p in [{'title': SITENAME, 'url': "index.html", 'slug': 'index'}] + pages %}
+							{% if (page is defined and page.slug is eq p.slug) or (page_name and p.slug is eq page_name) %}
+							<li class="active"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+							{% else %}
+							<li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+							{% endif %}
 							{% endfor %}
 						</ul>
 						{% if SOCIAL %}
