@@ -5,7 +5,7 @@ Category: Examples
 Tags: example, article
 Slug: article-one
 Summary: Short description for preview and feeds
-MainImage: 
+MainImage: images/pic01.jpg
 
 ### This is an example of an article
 
