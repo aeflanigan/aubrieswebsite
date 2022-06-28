@@ -3,6 +3,7 @@ from pathlib import Path
 AUTHOR = 'Aubrie Flanigan'
 SITENAME = "Aubrie's Site"
 SITEURL = ''
+SITESUBTITLE = "Welcome to my awesome website!"
 
 PATH = 'content'
 ARTICLE_PATHS = [p.absolute() for p in Path(PATH).glob('**/articles/*.md')]
@@ -18,6 +19,10 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+
+THEME = './themes/html5up-massively'
+THEME_STATIC_DIR = '.'
+THEME_STATIC_PATHS = ['static']
 
 # Blogroll
 LINKS = (('Pelican', 'https://getpelican.com/'),
