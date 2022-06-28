@@ -5,6 +5,7 @@ Category: Examples
 Tags: example, page
 Slug: about-example
 Summary: Short description for preview and feeds
+MainImage: images/pic01.jpg
 
 ### Aubrie
 
