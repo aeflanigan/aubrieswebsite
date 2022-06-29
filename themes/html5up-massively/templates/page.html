@@ -8,15 +8,7 @@
 
         <!-- Post -->
             <section class="post">
-                <header class="major">
-                    {% if page.showdatetime %}
-                    <span class="date">{{ page.date.strftime("%b %d %Y") }}</span>
-                    {% else %}
-                    <span class="date">•••</span>
-                    {% endif %}
-                    <h1>{{ page.title }}</h1>
-                    <p>{{ page.summary }}</p>
-                </header>
+                {{ post_header(page.title, summary=page.summary, date=page.date) }}
                 {% if page.mainimage %}
                 <div class="image main"><img src="{{ SITEURL }}/{{ page.mainimage }}" alt="" /></div>
                 {% endif %}
