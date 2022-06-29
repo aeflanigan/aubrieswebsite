@@ -1,20 +1,24 @@
+{% macro post_preview(article_obj) %}
+<article>
+	<header>
+		<span class="date">{{ article_obj.date.strftime("%b %d %Y") }}</span>
+		<h2><a href="{{ SITEURL }}/{{ article_obj.url }}">{{ article_obj.title }}</h2>
+	</header>
+	{% if article_obj.mainimage %}
+	<a href="{{ SITEURL }}/{{ article_obj.url }}" class="image fit"><img src="{{ SITEURL }}/{{ article_obj.mainimage }}" alt="" /></a>
+	{% endif %}
+	<p>{{ article_obj.summary }}</p>
+	<ul class="actions special">
+		<li><a href="{{ SITEURL }}/{{ article_obj.url }}" class="button">Full Story</a></li>
+	</ul>
+</article>
+{%- endmacro %}
+
 {% macro posts(article_list=[]) -%}
 <!-- Posts -->
 	<section class="posts">
-		{% for ao in article_list %}
-		<article>
-			<header>
-				<span class="date">{{ ao.date.strftime("%b %d %Y") }}</span>
-				<h2><a href="{{ SITEURL }}/{{ ao.url }}">{{ ao.title }}</h2>
-			</header>
-			{% if ao.mainimage %}
-			<a href="{{ SITEURL }}/{{ ao.url }}" class="image fit"><img src="{{ SITEURL }}/{{ ao.mainimage }}" alt="" /></a>
-			{% endif %}
-			<p>{{ ao.summary }}</p>
-			<ul class="actions special">
-				<li><a href="{{ SITEURL }}/{{ ao.url }}" class="button">Full Story</a></li>
-			</ul>
-		</article>
+		{% for article_obj in article_list %}
+		{{ post_preview(article_obj) }}
 		{% endfor %}
 	</section>
 {%- endmacro %}
