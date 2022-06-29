@@ -13,19 +13,7 @@
 				{% endfor %}
 			{% endif %}
 		<!-- Featured Post -->
-			<article class="post featured">
-				<header class="major">
-					<span class="date">{{ ns.featured.date.strftime("%b %d %Y") }}</span>
-					<h2><a href="{{ SITEURL }}/{{ ns.featured.url }}">{{ ns.featured.title }}</a></h2>
-					<p>{{ ns.featured.summary }}</p>
-				</header>
-				{% if ns.featured.mainimage %}
-				<a href="{{ SITEURL }}/{{ ns.featured.url }}" class="image main"><img src="{{ SITEURL }}/{{ ns.featured.mainimage }}" alt="" /></a>
-				{% endif %}
-				<ul class="actions special">
-					<li><a href="{{ SITEURL }}/{{ ns.featured.url }}" class="button large">Full Story</a></li>
-				</ul>
-			</article>
+		{{ post_preview(ns.featured, featured=True) }}
 		{% endif %}
 
 		{{ posts(article_list=articles) }}

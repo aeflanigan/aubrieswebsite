@@ -10,6 +10,7 @@ ARTICLE_PATHS = [p.absolute() for p in Path(PATH).glob('**/articles/*.md')]
 PAGE_PATHS = [p.absolute() for p in Path(PATH).glob('**/pages/*.md')]
 
 # Settings for html5up-massively theme
+# For featured article to always be the latest article, set value to -1
 FEATURED_ARTICLE = 'article-one'
 
 TIMEZONE = 'US/Eastern'
