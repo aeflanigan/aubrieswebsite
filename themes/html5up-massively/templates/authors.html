@@ -5,10 +5,21 @@
 <div id="main">
 
     <section class="post">
-        {{ post_header(SITENAME + " - Authors") }}
+        {{ post_header("Authors") }}
     </section>
-    {{ authors_list(authors=authors) }}
 
+    <!-- Posts -->
+        <section class="posts">
+            {% for author, _ in authors %}
+            <article>
+                <header>
+                    <span class="date">•••</span>
+                    <h2><a href="{{ SITEURL }}/{{ author.url }}">{{ author.name }}</a></h2>
+                </header>
+            </article>
+            {% endfor %}
+        </section>
+    
     {{ paginator() }}
 
 </div>
