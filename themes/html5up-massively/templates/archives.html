@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Archives{% endblock %}
+
+{% block content %}
+<!-- Main -->
+<div id="main">
+
+    <!-- Posts -->
+        <section class="posts">
+            {% for article in dates %}
+            <article>
+                <header>
+                    <span class="date">{{ article.date.strftime("%b %d %Y") }}</span>
+                    <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</h2>
+                </header>
+                {% if article.mainimage %}
+                <a href="{{ SITEURL }}/{{ article.url }}" class="image fit"><img src="{{ SITEURL }}/{{ article.mainimage }}" alt="" /></a>
+                {% endif %}
+                <p>{{ article.summary }}</p>
+                <ul class="actions special">
+                    <li><a href="{{ SITEURL }}/{{ article.url }}" class="button">Full Story</a></li>
+                </ul>
+            </article>
+            {% endfor %}
+        </section>
+
+    <!-- Footer -->
+        <!-- <footer>
+            <div class="pagination">
+                <a href="#" class="previous">Prev</a>
+                <a href="#" class="page active">1</a>
+                <a href="#" class="page">2</a>
+                <a href="#" class="page">3</a>
+                <span class="extra">&hellip;</span>
+                <a href="#" class="page">8</a>
+                <a href="#" class="page">9</a>
+                <a href="#" class="page">10</a>
+                <a href="#" class="next">Next</a>
+            </div>
+        </footer> -->
+
+</div>
+{% endblock %}
