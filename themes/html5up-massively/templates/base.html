@@ -36,24 +36,6 @@
 	</section>
 {%- endmacro %}
 
-{% macro author_preview(author) -%}
-<article>
-	<header>
-		<span class="date">•••</span>
-		<h2><a href="{{ SITEURL }}/{{ author.url }}">{{ author.name }}</a></h2>
-	</header>
-</article>
-{%- endmacro %}
-
-{% macro authors_list(authors=[]) -%}
-<!-- Posts -->
-	<section class="posts">
-		{% for author in authors %}
-		{{ author_preview(author[0]) }}
-		{% endfor %}
-	</section>
-{%- endmacro %}
-
 {% macro paginator() -%}
     <!-- Footer -->
         <!-- <footer>
