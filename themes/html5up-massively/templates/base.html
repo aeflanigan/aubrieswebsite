@@ -1,3 +1,24 @@
+{% macro posts(article_list=[]) -%}
+<!-- Posts -->
+	<section class="posts">
+		{% for ao in article_list %}
+		<article>
+			<header>
+				<span class="date">{{ ao.date.strftime("%b %d %Y") }}</span>
+				<h2><a href="{{ SITEURL }}/{{ ao.url }}">{{ ao.title }}</h2>
+			</header>
+			{% if ao.mainimage %}
+			<a href="{{ SITEURL }}/{{ ao.url }}" class="image fit"><img src="{{ SITEURL }}/{{ ao.mainimage }}" alt="" /></a>
+			{% endif %}
+			<p>{{ ao.summary }}</p>
+			<ul class="actions special">
+				<li><a href="{{ SITEURL }}/{{ ao.url }}" class="button">Full Story</a></li>
+			</ul>
+		</article>
+		{% endfor %}
+	</section>
+{%- endmacro %}
+
 <!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
