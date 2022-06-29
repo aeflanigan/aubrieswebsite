@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Main -->
+<div id="main">
+
+    <section class="post">
+        {{ post_header(SITENAME + " - Authors") }}
+    </section>
+    {{ authors_list(authors=authors) }}
+
+    {{ paginator() }}
+
+</div>
+{% endblock %}
