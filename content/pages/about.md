@@ -4,11 +4,11 @@ Modified: 2010-12-05 19:30
 Category: Examples
 Tags: example, page
 Slug: about-example
-Summary: Short description for preview and feeds
+Summary: Hi I'm Aubrie, a highly-qualified homo sapien
 MainImage: images/pic01.jpg
 
 ### Aubrie
 
 Here is some info about me, Aubrie.
 
-Is this thing on?
+Hello? Is this thing on?
