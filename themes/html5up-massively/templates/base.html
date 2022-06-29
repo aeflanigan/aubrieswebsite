@@ -1,4 +1,4 @@
-{% macro post_header(title, summary='', date=None) %}
+{% macro post_header(title, summary='', date=None) -%}
 <header class="major">
 	{% if date %}
 	<span class="date">{{ date.strftime("%b %d %Y") }}</span>
@@ -10,7 +10,7 @@
 </header>
 {%- endmacro %}
 
-{% macro post_preview(article_obj, featured=False) %}
+{% macro post_preview(article_obj, featured=False) -%}
 <article{% if featured %} class="post featured"{% endif %}>
 	<header{% if featured %} class="major"{% endif %}>
 		<span class="date">{{ article_obj.date.strftime("%b %d %Y") }}</span>
@@ -32,6 +32,24 @@
 	<section class="posts">
 		{% for article_obj in article_list %}
 		{{ post_preview(article_obj) }}
+		{% endfor %}
+	</section>
+{%- endmacro %}
+
+{% macro author_preview(author) -%}
+<article>
+	<header>
+		<span class="date">•••</span>
+		<h2><a href="{{ SITEURL }}/{{ author.url }}">{{ author.name }}</a></h2>
+	</header>
+</article>
+{%- endmacro %}
+
+{% macro authors_list(authors=[]) -%}
+<!-- Posts -->
+	<section class="posts">
+		{% for author in authors %}
+		{{ author_preview(author[0]) }}
 		{% endfor %}
 	</section>
 {%- endmacro %}
