@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% set ns = namespace(featured=None) %}
+{% set ns = namespace(featured=None, unfeatured=[]) %}
 <!-- Main -->
 	<div id="main">
 
@@ -16,7 +16,10 @@
 		{{ post_preview(ns.featured, featured=True) }}
 		{% endif %}
 
-		{{ posts(article_list=articles) }}
+		{% for ao in articles if ao.slug is ne ns.featured.slug %}
+			{% set ns.unfeatured = ns.unfeatured + [ao] %}
+		{% endfor %}
+		{{ posts(article_list=ns.unfeatured) }}
 
 		{{ paginator() }}
 
