@@ -1,3 +1,15 @@
+{% macro post_header(title, summary='', date=None) %}
+<header class="major">
+	{% if date %}
+	<span class="date">{{ date.strftime("%b %d %Y") }}</span>
+	{% else %}
+	<span class="date">•••</span>
+	{% endif %}
+	<h1>{{ title }}</h1>
+	{% if summary %}<p>{{ summary }}</p>{% endif %}
+</header>
+{%- endmacro %}
+
 {% macro post_preview(article_obj, featured=False) %}
 <article{% if featured %} class="post featured"{% endif %}>
 	<header{% if featured %} class="major"{% endif %}>
