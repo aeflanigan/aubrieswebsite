@@ -4,11 +4,11 @@ Modified: 2010-12-05 19:30
 Category: Examples
 Tags: example, page
 Slug: about-example
-Summary: Hi I'm Aubrie, a highly-qualified homo sapien
+Summary: TODO Think of a summary to put here
 MainImage: images/pic01.jpg
 
 ### Aubrie
 
-Here is some info about me, Aubrie.
+Here is some info about me, *Aubrie.*
 
 Hello? Is this thing on?
